@@ -22,8 +22,12 @@ Para facilitar la gestión de la base de datos se recomienda instalar [phpMyAdmi
 ### Contenido del repositorio
 * `app_full`: ficheros de la aplicación ya completa
 * `app_empty`: ficheros de la aplicación base, sin la mayor parte de la funcionalidad.
-* `slides`: presentación de diapositivas, desarrollada usando [Reveal.js](http://lab.hakim.se/reveal-js/).
+* `slides`: presentación de diapositivas.
 
 ### Ediciones del taller
 * 1ª edición: 19 de noviembre de 2012, Jornadas de Software Libre y Web 2.0, Escuela Superior de Ingeniería, Cádiz.
+
+### Proyectos relacionados
+* Para las traducciones de los mensajes de error usamos el [set de traducciones de paquitodev](https://github.com/paquitodev/spanish_ci).
+* Para las transparencias se ha usado [Reveal.js](http://lab.hakim.se/reveal-js/).
 
