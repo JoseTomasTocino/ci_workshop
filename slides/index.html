@@ -1,0 +1,484 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+    .reveal table { border-collapse: collapse; }
+    .reveal table td { border: 1px solid #eee; padding: 15px; text-align: center; vertical-align: middle; }
+    </style>
+
+</head>
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <img src="img/cilogo.png" class="unstyled">
+
+                <h5>Taller introductorio</h5>
+                <h6><small>Por José Tomás Tocino - <code>josetomas.tocino@uca.es</code></small></h6>
+            </section>
+
+            <section>
+                <section>
+                    <h1>¿Qué es CodeIgniter?</h1>
+                </section>
+
+                <section>
+                    <h3>¿Qué es CodeIgniter?</h3>
+                    <ul>
+                        <li>Framework PHP</li>
+                        <li>MVC</li>
+                        <li>Descomprimir y listo</li>
+                        <li>Lleno de utilidades</li>
+                        <li>Alto rendimiento</li>
+                        <li>Software Libre</li>
+                        <li>Documentación muy sencilla</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Lo malo de CodeIgniter</h3>
+                    <ul>
+                        <li>Antiguo</li>
+                        <li>PHP 5.1+</li>
+                        <li>Alternativas más modernas</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>MVC</h1>
+                    <h4>Modelo - Vista - Controlador</h4>
+                </section>
+
+                <section>
+                    <h2>MVC</h2>
+                    <p>Patrón arquitectónico que permite separar los datos, el control de la aplicación, y las vistas</p>
+                </section>
+
+                <section>
+                    <h2>Modelo</h2>
+
+                    <p>Representa el conjunto de datos de la aplicación (web o no). Gestiona el acceso a la fuente
+                        de datos (base de datos, API, etc), así como las operaciones sobre ellos</p>
+
+                    <p>En un entorno con base de datos, normalmente una tabla corresponde a un modelo</p>
+
+                </section>
+
+                <section>
+                    <h2>Controlador</h2>
+
+                    <p>Controla el flujo de la aplicación, transformando los datos del modelo para enviárselos a la vista, y
+                        gestionando la interacción del usuario con la vista que provoca acciones sobre el modelo</p>
+
+                    <p>En un entorno web, la navegación de una aplicación se estructurará en torno a los controladores y
+                        sus métodos</p>
+
+                    <pre style="margin-top: 2em;">http://tuweb.com/productos/lista/ -> Controlador 'productos', método 'lista'</pre>
+                </section>
+
+                <section>
+                    <h2>Vista</h2>
+
+                    <p>Representa los datos que recibe del controlador. Hay tantas vistas como formas de representar los datos:
+                        una web, un fichero XML, un fichero JSON, etc</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>¿Cómo funciona CodeIgniter?</h1>
+                    <h4>Descargable de <a href="http://codeigniter.com">CodeIgniter.com</a></h4>
+                </section>
+
+                <section>
+                    <h3>Estructura del directorio raíz</h3>
+                    <ul>
+                        <li><code>application</code> - Ficheros de nuestra aplicación</li>
+                        <li><code>system</code> - Ficheros del framework</li>
+                        <li><code>user_guide</code> - Guía de usuario</li>
+                        <li><code>index.php</code> - Controlador frontal</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Estructura del directorio <code>application</code></h3>
+                    <ul>
+                        <li><code>cache</code></li>
+                        <li><code>config</code></li>
+                        <li><code>controllers</code></li>
+                        <li><code>code</code></li>
+                        <li><code>errors</code></li>
+                        <li><code>helpers</code></li>
+                        <li><code>hooks</code></li>
+                        <li><code>language</code></li>
+                        <li><code>libraries</code></li>
+                        <li><code>logs</code></li>
+                        <li><code>models</code></li>
+                        <li><code>third_party</code></li>
+                        <li><code>views</code></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Flujo de ejecución</h3>
+                    <img src="img/appflowchart.gif" alt="">
+                </section>
+
+                <section>
+                    <h3>Controladores</h3>
+
+                    <p>Se encuentran en <code>application/controllers</code></p>
+
+<pre><code>class Productos extends CI_Controller
+{
+    // Este método se ejecutará al acceder a http://tuweb.com/productos/lista
+    public function lista ()
+    {
+        // ...
+    }
+
+    // Es posible pasar parámetros: http://tuweb.com/productos/detalle/5
+    public function detalle($id)
+    {
+        // $id = 5
+    }
+}
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>Modelos</h3>
+
+                    <p>Se encuentran en <code>application/models</code>. No tenemos que seguir una
+                        convención particular, excepto el nombre</p>
+
+<pre><code>class Producto_Model extends CI_Model
+{
+    // Se suelen incluir funciones relacionadas con la gestión de los datos
+    public function leer_todos()
+    {
+        // Código para leer y devolver todos los productos
+    }
+
+    public function borrar ($id)
+    {
+        // Código para borrar el producto con id = $id
+    }
+}
+</code></pre>
+
+    <p>Los modelos se usan desde los <strong>controladores</strong> y desde <strong>otros modelos</strong>.
+        Es necesario cargarlos previamente</p>
+
+<pre><code>// Estando en un controlador o en otro modelo
+$this->load->model('Producto_Model');
+
+// Ya podemos usar las funciones
+$mis_productos = $this->Producto_Model->leer_todos();</code></pre>
+                </section>
+
+                <section>
+                    <h3>Vistas</h3>
+                    <p>Son ficheros PHP que se encuentran en <code>application/views</code>. Lo más habitual es
+                        utilizar HTML+CSS para la representación. Las vistas se cargan desde los
+                        <strong>controladores</strong>. </p>
+
+<pre><code>$this->load->view('NombreVista');
+
+// Es posible pasarle un array de variables a la vista
+$this->load->view('NombreVista', array('title' => 'Lorem ipsum'));
+
+// Luego en la vista podemos acceder a esa variable directamente
+&lt;h1&gt;&lt;?php echo $title; ?&gt;&lt;/h1&gt;
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>Ficheros de configuración</h3>
+                    <p>Hay multitud de ellos, pero los más importantes son:</p>
+                    <ul>
+                        <li><code>config.php</code> - parámetros generales: cookies, sesiones, etc</li>
+                        <li><code>autoload.php</code> - qué libraries, helpers y modelos cargar automáticamente</li>
+                        <li><code>database.php</code> - parámetros de conexión a la base de datos</li>
+                        <li><code>routes.php</code> - configuración de enrutamiento</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Helpers</h3>
+                    <p>Conjuntos de funciones globales relacionadas. Hay algunas chorradas (Smiley helper... xD), pero otros
+                    muy útiles:</p>
+
+                    <ul>
+                        <li><code>form</code> - genera código html para formularios</li>
+                        <li><code>url</code> - autogenera URLs </li>
+                    </ul>
+                    <br><br>
+
+                    <p>Los helpers se pueden cargar para todo el sitio en el fichero <code>autoload.php</code>, o
+                        para un solo uso usando:</p>
+
+                    <pre><code>$this->load->helper('nombre');</code></pre>
+                </section>
+
+                <section>
+                    <h3>Libraries</h3>
+                    <p>Bibliotecas con una funcionalidad más avanzada que los helpers. Suelen necesitar inicialización</p>
+                    <ul>
+                        <li><code>database</code> - gestiona todo el acceso a bases de datos</li>
+                        <li><code>email</code> - envío de emails</li>
+                        <li><code>input</code> - gestión de parámetros GET, POST, COOKIE y SERVER</li>
+                        <li><code>session</code> - gestión de sesiones PHP</li>
+                        <li><code>file upload</code> - gestión de subida de ficheros por formularios</li>
+                        <li><code>image_lib</code> - facilita el procesamiento de imágenes: reescalado, rotación, etc.</li>
+                    </ul>
+                    <br><br>
+                    <p>Las bibliotecas se pueden cargar para todo el sitio en el fichero <code>autoload.php</code>, o
+                        para un solo uso usando:</p>
+
+                    <pre><code>$this->load->library('nombre');</code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Base de datos</h1>
+                    <h4>CodeIgniter no provee un ORM como otros frameworks, pero sí ofrece métodos que abstraen
+                        todas las consultas SQL.</h4>
+                </section>
+
+                <section>
+                    <h3>
+                        Carga
+                    </h3>
+
+                    <p>Podemos lanzar la conexión a la base de datos en cualquier momento con </p>
+
+<pre><code>$this->load->database();</code></pre>
+
+                    <p>O simplemente añadir la clase a la lista de bibliotecas auto-cargadas en <code>config/autoload.php</code></p>
+
+<pre><code>$autoload['libraries'] = array('database');</code></pre>
+
+                    <p>En ambos casos se utilizarán los parámetros de acceso de <code>config/database.php</code></p>
+
+<pre><code>$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'talleres';</pre></code>
+                </section>
+
+                <section>
+                    <h3>Consultas directas</h3>
+
+<pre><code>$consulta = $this->db->query("SELECT * FROM talleres"); </pre></code>
+
+                    <p>Inseguro y tedioso, no se recomienda.</p>
+                </section>
+
+                <section>
+                    <h3>Consultas con ActiveRecord</h3>
+                    <p>Multitud de métodos. Permite el encadenamiento.</p>
+<pre><code>// Leer todos los registros
+$consulta = $this->db->get('nombretabla');
+
+// Leer solo cierto campo
+$consulta = $this->db->select('titulo')
+                     ->get('nombretabla');
+
+// Aplicar criterios
+$this->db->where('titulo', 'Taller CodeIgniter');
+$consulta = $this->db->get('nombretabla');
+
+// Introducir registros
+$this->db->insert('nombretabla', array('titulo' => 'Taller Symfony'));
+
+// Actualizar registros
+$this->db->where('titulo', 'Taller Symfony');
+$this->db->update('nombretabla', array('titulo' => 'Taller Laravel'));
+
+// Borrar registros
+$this->db->delete('nombretabla', array('id' => 5));
+</code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h3>Aplicación de prueba</h3>
+                    <h1>Gestión de talleres</h1>
+                </section>
+
+                <section>
+                    <h3>Requisitos</h3>
+                    <ul>
+                        <li>Servidor web (Apache, Nginx, etc)</li>
+                        <li>PHP 5.1+</li>
+                        <li>MySQL</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Preparación</h2>
+                    <h4>Descargar código de</h4>
+                    <p><a href="https://github.com/JoseTomasTocino/ci_workshop">https://github.com/JoseTomasTocino/ci_workshop</a></p>
+                    <ul>
+                        <li><strong><code>app_empty</code> - código base, trabajaremos aquí</strong></li>
+                        <li><code>app_full</code> - aplicación completa, prohibido copiarse!</li>
+                        <li><code>slides</code> - transparencias</li>
+                    </ul>
+
+                    <h4>Preparar base de datos</h4>
+                    <ul>
+                        <li>Crear base de datos "talleres"</li>
+                        <li>Importar application/sql/talleres.sql</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Opciones de la aplicación</h3>
+                    <ul>
+                        <li>Dar de alta un taller</li>
+                        <li>Borrar un taller</li>
+                        <li>Inscribirse en un taller</li>
+                        <li>Ver la lista de inscritos en un taller</li>
+                    </ul>
+
+                    <h4>Cosas que no hemos incluido para no engordar el proyecto</h4>
+                    <ul>
+                        <li>Login de la parte de administración</li>
+                        <li>Edición de talleres</li>
+                        <li>Gestión de inscritos</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Diagrama de la base de datos</h3>
+
+                    <img src="img/diagrama_bd.png">
+                </section>
+
+                <section>
+                    <h3>Planificación de las URL y los controladores</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Página</th>
+                                <th>URL</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Inicial</td>
+                                <td>/ (Principal::index)</td>
+                            </tr>
+                            <tr>
+                                <td>Formulario nueva inscripción</td>
+                                <td>/principal/inscripcion/{ID}</td>
+                            </tr>
+                            <tr>
+                                <td>Gestión de talleres</td>
+                                <td>/admin/index</td>
+                            </tr>
+                            <tr>
+                                <td>Formulario nuevo taller</td>
+                                <td>/admin/nuevo_taller</td>
+                            </tr>
+                            <tr>
+                                <td>Borrar taller</td>
+                                <td>/admin/borrar_taller/{ID}</td>
+                            </tr>
+                            <tr>
+                                <td>Detalle de taller (ver inscritos)</td>
+                                <td>/admin/detalle_taller/{ID}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section>
+                    <h3>Planificación de los modelos</h3>
+                    <p>Dos modelos: Taller e Inscripción</p>
+
+                </section>
+
+                <section>
+                    <h3>Taller_Model</h3>
+                    <p>application/models/taller_model.php</p>
+                        <ul>
+                            <li>leer_unico($id)</li>
+                            <li>leer_unico_con_inscritos($id)</li>
+                            <li>leer_todos</li>
+                            <li>leer_todos_con_inscritos</li>
+                            <li>agregar</li>
+                            <li>borrar($id)</li>
+                        </ul>
+                </section>
+
+                <section>
+                    <h3>Inscripcion_Model</h3>
+                    <p>application/models/inscripcion_model.php</p>
+                    <ul>
+                        <li>agregar</li>
+                        <li>leer_por_taller($id)</li>
+                        <li>borrar_por_taller($id)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Vistas</h3>
+                    <p>Hemos usado <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> para
+                    los estilos. Se entregan terminadas porque es simple HTML con algo de PHP.</p>
+                    <ul>
+                        <li>Comunes:
+                        <ul>
+                            <li>header.php - Cabecera</li>
+                            <li>footer.php - Pie de página</li>
+                        </ul></li>
+
+                        <li>Zona Admin:
+                        <ul>
+                            <li>admin_indice.php</li>
+                            <li>admin_detalle_taller.php</li>
+                            <li>admin_nuevo_taller.php</li>
+                        </ul></li>
+
+                        <li>Zona General:
+                        <ul>
+                            <li>principal_indice.php</li>
+                            <li>principal_inscripcion.php</li>
+                        </ul></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Let's get coding!</h2>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script type="text/javascript" src="js/reveal.js"></script>
+    <script type="text/javascript">
+        Reveal.initialize({
+            dependencies: [
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+</html>
