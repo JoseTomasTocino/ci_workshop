@@ -11,7 +11,7 @@ El taller se estructura en dos partes. En la primera parte se hace una pequeña 
 Para poder tomar partido del taller con todas las garantías es importante cumplir los siguientes requisitos:
 * Tener un mínimo de experiencia de programación, preferiblemente con PHP.
 * **Traer portátil** con un servidor instalado (ya sea Apache, Nginx u otro) con PHP y MySQL. El sistema operativo es irrelevante. Para instalar el servidor en vuestro ordenador:
-    * Si usáis PC, la mejor opción es utilizar [WampServer](http://www.wampserver.com/en/).
+    * Si usáis Windows, la mejor opción es utilizar [WampServer](http://www.wampserver.com/en/).
     * Si usáis GNU/Linux, utilizad la paquetería propia de vuestra distribución. En particular para Linux Mint y Ubuntu recomiendo utilizar [tasksel](https://help.ubuntu.com/community/ApacheMySQLPHP).
     * Si utilizas Mac OS, ~~no eres bienvenido al taller~~ utiliza [Mamp](http://www.mamp.info/en/index.html).
 
