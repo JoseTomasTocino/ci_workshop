@@ -61,6 +61,9 @@ class Taller_Model extends CI_Model
 
     public function agregar()
     {
+        // Leemos los campos del formulario
+        $datos_formulario = $this->input->post();
+
         // Cargamos la biblioteca de subida de imágenes
         $this->load->library('upload');
 
@@ -78,18 +81,17 @@ class Taller_Model extends CI_Model
         // Si la subida no ha tenido éxito
         if (!$resultado)
         {
-            // Devolvemos el mensaje de error
-            return $this->upload->display_errors();
+            // Ha habido un error o no se ha seleccionado la imagen
+            $datos_formulario['imagen'] = "";
         }
+        else
+        {
+            // Leemos la información tras la subida
+            $datos_subida = $this->upload->data();
 
-        // Leemos la información tras la subida
-        $datos_subida = $this->upload->data();
-
-        // Leemos los campos del formulario
-        $datos_formulario = $this->input->post();
-
-        // Introducimos en los datos la ubicación de la imagen subida
-        $datos_formulario['imagen'] = $datos_subida['file_name'];
+            // Introducimos en los datos la ubicación de la imagen subida
+            $datos_formulario['imagen'] = $datos_subida['file_name'];
+        }
 
         // Insertamos en la BD el nuevo registro
         return $this->db->insert($this->tabla, $datos_formulario);

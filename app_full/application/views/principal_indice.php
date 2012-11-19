@@ -8,8 +8,17 @@ if ($talleres)
         $plazasOcupadas = count($taller->inscritos);
         $plazasLibres = intval($taller->numero_plazas) - $plazasOcupadas;
 
+        if (trim($taller->imagen) != '')
+        {
+            $rutaImagen = base_url() . 'uploads/' . $taller->imagen;
+        }
+        else
+        {
+            $rutaImagen = base_url() . 'assets/img/no_image.png';
+        }
+
         echo '<div class="taller clearfix">';
-        echo '<img src="' . base_url() . 'uploads/' . $taller->imagen . '" class="img-polaroid">';
+        echo '<img src="' . $rutaImagen . '" class="img-polaroid">';
         echo '<h5>' . $taller->titulo . '</h5>';
         echo '<p>' . nl2br($taller->descripcion) . '</p>';
 
